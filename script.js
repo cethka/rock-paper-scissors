@@ -1,6 +1,6 @@
 // Make the computer choose its move
 
-function getComputerChoice() {
+const getComputerChoice = () => {
   const choiceNum = Math.floor(Math.random() * 3);
   switch(choiceNum) {
     case 0:
@@ -10,11 +10,13 @@ function getComputerChoice() {
     case 2:
       return "scissors";
   }
-  // No need for break statements since we're returning a value after each case statement anyway
 }
 
-// console.log(getComputerChoice());
-
 // Let the user choose their move
+
+const getHumanChoice = () => prompt("Enter your move").toLowerCase();
+
+console.log(getHumanChoice());
+
 // Compare the results
 // Announce the winner
