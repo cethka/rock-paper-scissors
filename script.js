@@ -19,14 +19,16 @@ const getComputerChoice = () => {
 const getHumanChoice = () => prompt("Enter your move");
 
 // Write the logic to play a single round
-const winChecker = (player, computer) => {
+const winHandler = (player, computer) => {
   const winningCon =
     player === "rock" && computer === "scissors" ||
     player === "scissors" && computer === "paper" ||
     player === "paper" && computer === "rock";
-    
+
   winningCon ? humanScore++ : computerScore++;
-  return winningCon;
+  return winningCon ? 
+    `The player gets a score! ${player} beats ${computer}.`:
+    `The computer gets a score! ${computer} beats ${player}.`;
 }
 
 const playRound = (humanChoice, computerChoice) => {
@@ -35,9 +37,7 @@ const playRound = (humanChoice, computerChoice) => {
     return `Both sides chose ${humanChoice}.`;
   } 
   
-  return winChecker(humanChoice, computerChoice) ?
-    `The player gets a score! ${humanChoice} beats ${computerChoice}.` :
-    `The computer gets a score! ${computerChoice} beats ${humanChoice}.`;
+  return winHandler(humanChoice, computerChoice);
 }
 
 // Write the logic to play the entire game
