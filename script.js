@@ -14,9 +14,33 @@ const getComputerChoice = () => {
 
 // Let the user choose their move
 
-const getHumanChoice = () => prompt("Enter your move").toLowerCase();
+const getHumanChoice = () => prompt("Enter your move");
 
-console.log(getHumanChoice());
+// Write the logic to play a single round
 
-// Compare the results
+let humanScore = 0;
+let computerScore = 0;
+
+const playRound = (humanChoice, computerChoice) => {
+  humanChoice = humanChoice.toLowerCase();
+  if (humanChoice === computerChoice) {
+    console.log(`It's a tie! Both sides chose ${humanChoice}.`);
+  } else if (
+    humanChoice === "rock" && computerChoice === "scissors" ||
+    humanChoice === "scissors" && computerChoice === "paper" ||
+    humanChoice === "paper" && computerChoice === "rock"
+  ) {
+    humanScore++;
+    console.log(`You win! ${humanChoice} beats ${computerChoice}.`)
+  } else {
+    computerScore++;
+    console.log(`You lose! ${computerChoice} beats ${humanChoice}.`)
+  }
+}
+
+const humanSelection = getHumanChoice();
+const computerSelection = getComputerChoice();
+
+playRound(humanSelection, computerSelection);
+
 // Announce the winner
